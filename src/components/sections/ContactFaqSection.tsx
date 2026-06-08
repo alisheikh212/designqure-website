@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Reveal } from '@/components/ui/Motion';
 import { MessageSquare, Plus, Minus } from 'lucide-react';
 
+type SubmitStatus = "idle" | "submitting" | "success" | "error";
+
 const FAQItem = ({ question, answer }: { question: string; answer: string }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -30,7 +32,7 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
 };
 
 export function ContactFaqSection() {
-  const [submissionState, setSubmissionState] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
 
   const encode = (data: Record<string, string>) =>
     new URLSearchParams(data).toString();
@@ -40,10 +42,9 @@ export function ContactFaqSection() {
 
     const form = event.currentTarget;
     const formData = new FormData(form);
-    setSubmissionState('idle');
 
     const data: Record<string, string> = {
-      'form-name': 'contact',
+      "form-name": "contact",
     };
 
     formData.forEach((value, key) => {
@@ -51,20 +52,25 @@ export function ContactFaqSection() {
     });
 
     try {
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      setSubmitStatus("submitting");
+
+      const response = await fetch("/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
         body: encode(data),
       });
 
       if (!response.ok) {
-        throw new Error('Form submission failed');
+        throw new Error(`Form submission failed: ${response.status}`);
       }
 
       form.reset();
-      setSubmissionState('success');
+      setSubmitStatus("success");
     } catch (error) {
-      setSubmissionState('error');
+      console.error("Contact form submission error:", error);
+      setSubmitStatus("error");
     }
   };
 
@@ -77,12 +83,22 @@ export function ContactFaqSection() {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
           }
+          @keyframes contact-message-in {
+            0% { opacity: 0; transform: translateY(8px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
           .animate-marquee-fast {
             animation: marquee-fast 40s linear infinite;
+          }
+          .animate-contact-message-in {
+            animation: contact-message-in 180ms ease-out both;
           }
           @media (prefers-reduced-motion: reduce) {
             .animate-marquee-fast {
               animation-duration: 100s;
+            }
+            .animate-contact-message-in {
+              animation: none;
             }
           }
         `}</style>
@@ -197,16 +213,16 @@ export function ContactFaqSection() {
                           <textarea name="message" rows={3} placeholder="Tell us about your goals, timeline, and what's broken right now..." className="w-full border border-ink/30 focus:border-ink p-3 outline-none font-sans text-sm md:text-base font-medium text-ink bg-transparent transition-colors placeholder:text-ink/30 resize-none rounded-none"></textarea>
                        </div>
 
-                       <button type="submit" className="w-full bg-ink text-lime border-2 border-ink h-[56px] md:h-[64px] flex items-center justify-center font-mono text-[14px] md:text-base font-bold uppercase tracking-wider hover:bg-[#111] transition-colors mt-auto group">
-                          Submit Inquiry <span className="ml-3 text-lg font-normal group-hover:translate-x-1 transition-transform">→</span>
+                       <button type="submit" disabled={submitStatus === "submitting"} className="w-full bg-ink text-lime border-2 border-ink h-[56px] md:h-[64px] flex items-center justify-center font-mono text-[14px] md:text-base font-bold uppercase tracking-wider hover:bg-[#111] transition-colors mt-auto group disabled:cursor-wait disabled:opacity-80">
+                          {submitStatus === "submitting" ? "SENDING..." : "SUBMIT ENQUIRY"} <span className="ml-3 text-lg font-normal group-hover:translate-x-1 transition-transform">→</span>
                        </button>
-                       {submissionState === 'success' && (
-                         <p className="font-sans text-sm md:text-base font-medium text-ink mt-2">
+                       {submitStatus === "success" && (
+                         <p className="animate-contact-message-in bg-lime border-2 border-ink shadow-[4px_4px_0px_#050505] px-4 py-3 font-sans text-sm md:text-base font-bold text-ink mt-2">
                            Thanks — your enquiry has been submitted.
                          </p>
                        )}
-                       {submissionState === 'error' && (
-                         <p className="font-sans text-sm md:text-base font-medium text-ink mt-2">
+                       {submitStatus === "error" && (
+                         <p className="animate-contact-message-in bg-orange border-2 border-ink shadow-[4px_4px_0px_#050505] px-4 py-3 font-sans text-sm md:text-base font-bold text-ink mt-2">
                            Something went wrong. Please try again.
                          </p>
                        )}
