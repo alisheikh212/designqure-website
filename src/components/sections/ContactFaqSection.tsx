@@ -30,6 +30,43 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
 };
 
 export function ContactFaqSection() {
+  const [submissionState, setSubmissionState] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const encodeFormData = (formData: FormData) => {
+    const params = new URLSearchParams();
+
+    for (const [key, value] of formData.entries()) {
+      params.append(key, String(value));
+    }
+
+    return params.toString();
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    setSubmissionState('idle');
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encodeFormData(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Submission failed');
+      }
+
+      setSubmissionState('success');
+      form.reset();
+    } catch (error) {
+      setSubmissionState('error');
+    }
+  };
+
   return (
     <section id="inquiry" className="bg-[#F5F4EF] w-full border-b-[2px] border-ink">
       {/* ORANGE MARQUEE */}
@@ -101,32 +138,46 @@ export function ContactFaqSection() {
                        </div>
                     </div>
 
-                    <form className="flex flex-col gap-5 w-full flex-grow">
+                    <form
+                      name="contact"
+                      method="POST"
+                      data-netlify="true"
+                      netlify-honeypot="bot-field"
+                      onSubmit={handleSubmit}
+                      className="flex flex-col gap-5 w-full flex-grow"
+                    >
+                       <input type="hidden" name="form-name" value="contact" />
+                       <p hidden>
+                         <label>
+                           Don&apos;t fill this out:
+                           <input name="bot-field" />
+                         </label>
+                       </p>
                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                           <div className="flex flex-col">
                              <label className="font-mono text-[11px] font-bold uppercase tracking-wider mb-2 text-ink/80">Name</label>
-                             <input type="text" placeholder="John Doe" className="w-full border border-ink/30 focus:border-ink p-3 outline-none font-sans text-sm md:text-base font-medium text-ink bg-transparent transition-colors placeholder:text-ink/30 rounded-none" />
+                             <input name="name" type="text" placeholder="John Doe" className="w-full border border-ink/30 focus:border-ink p-3 outline-none font-sans text-sm md:text-base font-medium text-ink bg-transparent transition-colors placeholder:text-ink/30 rounded-none" />
                           </div>
                           <div className="flex flex-col">
                              <label className="font-mono text-[11px] font-bold uppercase tracking-wider mb-2 text-ink/80">Email</label>
-                             <input type="email" placeholder="john@example.com" className="w-full border border-ink/30 focus:border-ink p-3 outline-none font-sans text-sm md:text-base font-medium text-ink bg-transparent transition-colors placeholder:text-ink/30 rounded-none" />
+                             <input name="email" type="email" placeholder="john@example.com" className="w-full border border-ink/30 focus:border-ink p-3 outline-none font-sans text-sm md:text-base font-medium text-ink bg-transparent transition-colors placeholder:text-ink/30 rounded-none" />
                           </div>
                        </div>
                        
                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-2">
                           <div className="flex flex-col">
                              <label className="font-mono text-[11px] font-bold uppercase tracking-wider mb-2 text-ink/80">Brand / Company</label>
-                             <input type="text" placeholder="Acme Corp" className="w-full border border-ink/30 focus:border-ink p-3 outline-none font-sans text-sm md:text-base font-medium text-ink bg-transparent transition-colors placeholder:text-ink/30 rounded-none" />
+                             <input name="brand" type="text" placeholder="Acme Corp" className="w-full border border-ink/30 focus:border-ink p-3 outline-none font-sans text-sm md:text-base font-medium text-ink bg-transparent transition-colors placeholder:text-ink/30 rounded-none" />
                           </div>
                           <div className="flex flex-col">
                              <label className="font-mono text-[11px] font-bold uppercase tracking-wider mb-2 text-ink/80">Current Website</label>
-                             <input type="url" placeholder="https://" className="w-full border border-ink/30 focus:border-ink p-3 outline-none font-sans text-sm md:text-base font-medium text-ink bg-transparent transition-colors placeholder:text-ink/30 rounded-none" />
+                             <input name="website" type="url" placeholder="https://" className="w-full border border-ink/30 focus:border-ink p-3 outline-none font-sans text-sm md:text-base font-medium text-ink bg-transparent transition-colors placeholder:text-ink/30 rounded-none" />
                           </div>
                        </div>
                        
                        <div className="flex flex-col mt-2">
                           <label className="font-mono text-[11px] font-bold uppercase tracking-wider mb-2 text-ink/80">Primary Service</label>
-                          <select defaultValue="" className="w-full border border-ink/30 focus:border-ink p-3 outline-none font-sans text-sm md:text-base font-medium text-ink bg-transparent transition-colors cursor-pointer rounded-none">
+                          <select name="service" defaultValue="" className="w-full border border-ink/30 focus:border-ink p-3 outline-none font-sans text-sm md:text-base font-medium text-ink bg-transparent transition-colors cursor-pointer rounded-none">
                              <option value="" disabled>Select a service...</option>
                              <option value="website">Website Design</option>
                              <option value="landing-page">Landing Page</option>
@@ -137,17 +188,27 @@ export function ContactFaqSection() {
 
                        <div className="flex flex-col mt-2">
                           <label className="font-mono text-[11px] font-bold uppercase tracking-wider mb-2 text-ink/80">Estimated Budget</label>
-                          <input type="text" placeholder="e.g. $5,000" className="w-full border border-ink/30 focus:border-ink p-3 outline-none font-sans text-sm md:text-base font-medium text-ink bg-transparent transition-colors placeholder:text-ink/30 rounded-none" />
+                          <input name="budget" type="text" placeholder="e.g. $5,000" className="w-full border border-ink/30 focus:border-ink p-3 outline-none font-sans text-sm md:text-base font-medium text-ink bg-transparent transition-colors placeholder:text-ink/30 rounded-none" />
                        </div>
 
                        <div className="flex flex-col mt-2 mb-4">
                           <label className="font-mono text-[11px] font-bold uppercase tracking-wider mb-2 text-ink/80">Message</label>
-                          <textarea rows={3} placeholder="Tell us about your goals, timeline, and what's broken right now..." className="w-full border border-ink/30 focus:border-ink p-3 outline-none font-sans text-sm md:text-base font-medium text-ink bg-transparent transition-colors placeholder:text-ink/30 resize-none rounded-none"></textarea>
+                          <textarea name="message" rows={3} placeholder="Tell us about your goals, timeline, and what's broken right now..." className="w-full border border-ink/30 focus:border-ink p-3 outline-none font-sans text-sm md:text-base font-medium text-ink bg-transparent transition-colors placeholder:text-ink/30 resize-none rounded-none"></textarea>
                        </div>
 
-                       <button type="button" className="w-full bg-ink text-lime border-2 border-ink h-[56px] md:h-[64px] flex items-center justify-center font-mono text-[14px] md:text-base font-bold uppercase tracking-wider hover:bg-[#111] transition-colors mt-auto group">
+                       <button type="submit" className="w-full bg-ink text-lime border-2 border-ink h-[56px] md:h-[64px] flex items-center justify-center font-mono text-[14px] md:text-base font-bold uppercase tracking-wider hover:bg-[#111] transition-colors mt-auto group">
                           Submit Inquiry <span className="ml-3 text-lg font-normal group-hover:translate-x-1 transition-transform">→</span>
                        </button>
+                       {submissionState === 'success' && (
+                         <p className="font-sans text-sm md:text-base font-medium text-ink mt-2">
+                           Thanks — your enquiry has been submitted.
+                         </p>
+                       )}
+                       {submissionState === 'error' && (
+                         <p className="font-sans text-sm md:text-base font-medium text-ink mt-2">
+                           Something went wrong. Please try again.
+                         </p>
+                       )}
                     </form>
                  </div>
               </Reveal>
