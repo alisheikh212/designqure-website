@@ -29,11 +29,11 @@ export const portfolioProjects = [
   {
     title: "DesignQure Studio",
     category: "Internal Concept",
-    image: "/portfolio/designqure-studio.jpg",
-    link: "https://designqure.com",
+    image: "/portfolio/ampify.jpeg",
+    link: "https://ampify4u.com",
     description:
-      "A brutalist studio concept built around oversized type, sharp sections, and scroll energy.",
-    status: "Concept",
+      "A digital agency built around oversized type, sharp sections, and scroll energy.",
+    status: "Live",
   },
   {
     title: "Founder Portfolio",
