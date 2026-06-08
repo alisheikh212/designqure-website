@@ -170,7 +170,7 @@ export function TestimonialsSection() {
             <p className="font-display font-black text-[24px] md:text-[32px] lg:text-[38px] uppercase leading-[0.95] tracking-[-0.04em] text-ink">
               READY TO MAKE YOUR WEBSITE SOUND LIKE THIS?
             </p>
-            <a href="#inquiry" className="inline-flex items-center justify-center bg-ink text-lime border-[2px] border-ink h-[50px] md:h-[54px] px-6 md:px-8 font-mono text-[12px] md:text-[13px] font-bold uppercase tracking-wider hover:bg-lime hover:text-ink transition-colors shadow-[4px_4px_0px_#050505] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none w-fit shrink-0">
+            <a href="#contact" className="inline-flex items-center justify-center bg-ink text-lime border-[2px] border-ink h-[50px] md:h-[54px] px-6 md:px-8 font-mono text-[12px] md:text-[13px] font-bold uppercase tracking-wider hover:bg-lime hover:text-ink transition-colors shadow-[4px_4px_0px_#050505] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none w-fit shrink-0">
               START A PROJECT <ArrowRight size={16} strokeWidth={3} className="ml-2" />
             </a>
           </div>

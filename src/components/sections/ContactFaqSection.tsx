@@ -75,7 +75,7 @@ export function ContactFaqSection() {
   };
 
   return (
-    <section id="inquiry" className="bg-[#F5F4EF] w-full border-b-[2px] border-ink">
+    <section id="contact" className="bg-[#F5F4EF] w-full border-b-[2px] border-ink">
       {/* ORANGE MARQUEE */}
       <div className="w-full max-w-[100vw] h-[48px] md:h-[64px] bg-orange border-b-[2px] border-ink overflow-hidden flex items-center shrink-0">
         <style>{`

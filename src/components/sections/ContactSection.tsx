@@ -18,7 +18,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="bg-blue text-paper py-20 md:py-24 lg:py-32">
+    <section id="final-cta" className="bg-blue text-paper py-20 md:py-24 lg:py-32">
       <div className="container mx-auto px-4 md:px-8 lg:px-10 text-center flex flex-col items-center">
         
         <Reveal direction="up" className="w-full">
