@@ -18,12 +18,12 @@ export const portfolioProjects = [
     status: "Live Site",
   },
   {
-    title: "House of Olympus",
-    category: "Brand Identity / E-commerce Design",
-    image: "/portfolio/house-of-olympus.jpg",
-    link: "https://houseofolympus.com",
+    title: "House of Projectors",
+    category: "E-commerce Design",
+    image: "/portfolio/hop-page.jpeg",
+    link: "https://houseofprojectors.com",
     description:
-      "A premium fragrance-inspired product identity with bold packaging, mythology-led positioning, and e-commerce visuals.",
+      "A premium electronics online marketplace",
     status: "Live Site",
   },
   {
