@@ -7,6 +7,7 @@ import { WorkSection } from '@/components/sections/WorkSection';
 import { ProcessSection } from '@/components/sections/ProcessSection';
 import { AboutSection } from '@/components/sections/AboutSection';
 import { ContactSection } from '@/components/sections/ContactSection';
+import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { ContactFaqSection } from '@/components/sections/ContactFaqSection';
 
 export function Home() {
@@ -230,6 +231,7 @@ export function Home() {
       <ProcessSection />
       <AboutSection />
       <ContactSection />
+      <TestimonialsSection />
       <ContactFaqSection />
 
     </div>
