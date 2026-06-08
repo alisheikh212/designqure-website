@@ -32,15 +32,8 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
 export function ContactFaqSection() {
   const [submissionState, setSubmissionState] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const encodeFormData = (formData: FormData) => {
-    const params = new URLSearchParams();
-
-    for (const [key, value] of formData.entries()) {
-      params.append(key, String(value));
-    }
-
-    return params.toString();
-  };
+  const encode = (data: Record<string, string>) =>
+    new URLSearchParams(data).toString();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -49,19 +42,27 @@ export function ContactFaqSection() {
     const formData = new FormData(form);
     setSubmissionState('idle');
 
+    const data: Record<string, string> = {
+      'form-name': 'contact',
+    };
+
+    formData.forEach((value, key) => {
+      data[key] = String(value);
+    });
+
     try {
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encodeFormData(formData),
+        body: encode(data),
       });
 
       if (!response.ok) {
-        throw new Error('Submission failed');
+        throw new Error('Form submission failed');
       }
 
-      setSubmissionState('success');
       form.reset();
+      setSubmissionState('success');
     } catch (error) {
       setSubmissionState('error');
     }
