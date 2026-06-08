@@ -165,10 +165,7 @@ export function ContactFaqSection() {
                     >
                        <input type="hidden" name="form-name" value="contact" />
                        <p hidden>
-                         <label>
-                           Don&apos;t fill this out:
-                           <input name="bot-field" />
-                         </label>
+                         <label>Don’t fill this out: <input name="bot-field" /></label>
                        </p>
                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                           <div className="flex flex-col">
@@ -217,12 +214,12 @@ export function ContactFaqSection() {
                           {submitStatus === "submitting" ? "SENDING..." : "SUBMIT ENQUIRY"} <span className="ml-3 text-lg font-normal group-hover:translate-x-1 transition-transform">→</span>
                        </button>
                        {submitStatus === "success" && (
-                         <p className="animate-contact-message-in bg-lime border-2 border-ink shadow-[4px_4px_0px_#050505] px-4 py-3 font-sans text-sm md:text-base font-bold text-ink mt-2">
+                         <p role="status" aria-live="polite" className="animate-contact-message-in bg-lime border-2 border-ink shadow-[4px_4px_0px_#050505] px-4 py-3 font-sans text-sm md:text-base font-bold text-ink mt-2">
                            Thanks — your enquiry has been submitted.
                          </p>
                        )}
                        {submitStatus === "error" && (
-                         <p className="animate-contact-message-in bg-orange border-2 border-ink shadow-[4px_4px_0px_#050505] px-4 py-3 font-sans text-sm md:text-base font-bold text-ink mt-2">
+                         <p role="alert" className="animate-contact-message-in bg-orange border-2 border-ink shadow-[4px_4px_0px_#050505] px-4 py-3 font-sans text-sm md:text-base font-bold text-ink mt-2">
                            Something went wrong. Please try again.
                          </p>
                        )}
