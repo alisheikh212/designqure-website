@@ -27,7 +27,7 @@ export const portfolioProjects = [
     status: "Live Site",
   },
   {
-    title: "DesignQure Studio",
+    title: "Ampify4U",
     category: "Internal Concept",
     image: "/portfolio/ampify.jpeg",
     link: "https://ampify4u.com",
