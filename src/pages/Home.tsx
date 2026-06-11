@@ -1,5 +1,6 @@
 import React from 'react';
 import { Reveal, Parallax } from '@/components/ui/Motion';
+import { TextSplit } from '@/components/ui/split-text';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -38,8 +39,14 @@ export function Home() {
                 <h1 className="font-display font-black text-[clamp(44px,13vw,72px)] md:text-[clamp(62px,8vw,92px)] lg:text-[clamp(74px,8vw,118px)] uppercase leading-[0.88] md:leading-[0.9] lg:leading-[0.85] tracking-[-0.055em] md:tracking-[-0.065em] text-ink w-full md:max-w-[560px] lg:max-w-full break-words">
                   WEBSITES<br />
                   THAT MAKE<br />
-                  <span className="text-orange underline underline-offset-[4px] lg:underline-offset-[6px] decoration-[5px] md:decoration-[6px] lg:decoration-[8px] decoration-ink">SMALL</span><br />
-                  <span className="text-orange underline underline-offset-[4px] lg:underline-offset-[6px] decoration-[5px] md:decoration-[6px] lg:decoration-[8px] decoration-ink">BRANDS</span><br />
+                  <span className="relative inline-flex text-orange">
+                    <TextSplit maxMove={80} falloff={0.3}>SMALL</TextSplit>
+                    <span className="absolute -bottom-[4px] lg:-bottom-[6px] left-0 right-0 h-[5px] md:h-[6px] lg:h-[8px] bg-ink pointer-events-none" aria-hidden="true" />
+                  </span><br />
+                  <span className="relative inline-flex text-orange">
+                    <TextSplit maxMove={80} falloff={0.3}>BRANDS</TextSplit>
+                    <span className="absolute -bottom-[4px] lg:-bottom-[6px] left-0 right-0 h-[5px] md:h-[6px] lg:h-[8px] bg-ink pointer-events-none" aria-hidden="true" />
+                  </span><br />
                   LOOK<br />
                   SERIOUS.
                 </h1>
