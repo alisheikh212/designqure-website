@@ -1,12 +1,12 @@
 export const portfolioProjects = [
   {
-    title: "Crystal Clean",
-    category: "Brand Identity / Website",
-    image: "/portfolio/crystal-clean.jpg",
-    link: "https://crystalclean.designqure.com",
+    title: "R Digital",
+    category: "Digital Operator Website",
+    image: "/portfolio/rdig.png",
+    link: "https://https://rdigital-sigma.vercel.app/",
     description:
-      "A premium detailing website direction with dark visuals, cinematic product framing, and sharper trust-building sections.",
-    status: "Live Site",
+      "Operating & Advisory Firm",
+    status: "Concept",
   },
   {
     title: "Collectors Hub",
