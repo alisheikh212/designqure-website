@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 interface TextSplitProps {
   children: string;
   className?: string;
+  charClassName?: string;
   topClassName?: string;
   bottomClassName?: string;
   maxMove?: number;
@@ -14,6 +15,7 @@ interface TextSplitProps {
 export const TextSplit = ({
   children,
   className,
+  charClassName = "h-[1em]",
   topClassName,
   bottomClassName,
   maxMove = 50,
@@ -28,7 +30,7 @@ export const TextSplit = ({
   };
 
   return (
-    <div className={cn("relative flex items-center justify-center", className)}>
+    <div className={cn("relative flex items-center justify-start", className)}>
       {children.split("").map((char, index) => {
         const offset = getOffset(index);
         const displayChar = char === " " ? " " : char;
@@ -36,7 +38,7 @@ export const TextSplit = ({
         return (
           <div
             key={`${char}-${index}`}
-            className="relative flex flex-col h-[1em] w-auto leading-none"
+            className={cn("relative flex flex-col w-auto leading-none overflow-hidden", charClassName)}
             onMouseEnter={() => setHoverIndex(index)}
             onMouseLeave={() => setHoverIndex(null)}
           >
@@ -44,7 +46,7 @@ export const TextSplit = ({
               initial={false}
               animate={{ y: `-${offset}%` }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className={cn("overflow-hidden", topClassName)}
+              className={cn("flex-1 overflow-hidden", topClassName)}
             >
               {displayChar}
             </motion.span>
@@ -53,7 +55,7 @@ export const TextSplit = ({
               initial={false}
               animate={{ y: `${offset}%` }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className={cn("overflow-hidden", bottomClassName)}
+              className={cn("flex-1 overflow-hidden", bottomClassName)}
             >
               <span className="block -translate-y-1/2">{displayChar}</span>
             </motion.span>

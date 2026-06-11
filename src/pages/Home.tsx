@@ -40,11 +40,11 @@ export function Home() {
                   WEBSITES<br />
                   THAT MAKE<br />
                   <span className="relative inline-flex text-orange">
-                    <TextSplit maxMove={80} falloff={0.3}>SMALL</TextSplit>
+                    <TextSplit maxMove={80} falloff={0.3} charClassName="h-[0.88em] md:h-[0.9em] lg:h-[0.85em]">SMALL</TextSplit>
                     <span className="absolute -bottom-[4px] lg:-bottom-[6px] left-0 right-0 h-[5px] md:h-[6px] lg:h-[8px] bg-ink pointer-events-none" aria-hidden="true" />
                   </span><br />
                   <span className="relative inline-flex text-orange">
-                    <TextSplit maxMove={80} falloff={0.3}>BRANDS</TextSplit>
+                    <TextSplit maxMove={80} falloff={0.3} charClassName="h-[0.88em] md:h-[0.9em] lg:h-[0.85em]">BRANDS</TextSplit>
                     <span className="absolute -bottom-[4px] lg:-bottom-[6px] left-0 right-0 h-[5px] md:h-[6px] lg:h-[8px] bg-ink pointer-events-none" aria-hidden="true" />
                   </span><br />
                   LOOK<br />
