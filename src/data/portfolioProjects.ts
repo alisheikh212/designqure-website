@@ -45,12 +45,12 @@ export const portfolioProjects = [
     status: "Concept",
   },
   {
-    title: "Product Launch Page",
-    category: "Landing Page",
-    image: "/portfolio/product-launch-page.jpg",
-    link: "https://product-launch.designqure.com",
+    title: "BeePoint Shop",
+    category: "Shopify Website",
+    image: "/portfolio/bpps.png",
+    link: "https://beepoint.shop",
     description:
-      "A bold launch page direction for one offer, one message, and one clear action.",
-    status: "Concept",
+      "A bold website direction for one brand, one message, and one clear action.",
+    status: "Live",
   },
 ];
