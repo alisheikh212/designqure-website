@@ -39,12 +39,12 @@ export function Home() {
                 <h1 className="font-display font-black text-[clamp(44px,13vw,72px)] md:text-[clamp(62px,8vw,92px)] lg:text-[clamp(74px,8vw,118px)] uppercase leading-[0.88] md:leading-[0.9] lg:leading-[0.85] tracking-[-0.055em] md:tracking-[-0.065em] text-ink w-full md:max-w-[560px] lg:max-w-full break-words">
                   WEBSITES<br />
                   THAT MAKE<br />
-                  <span className="relative inline-flex text-orange">
-                    <TextSplit maxMove={80} falloff={0.3} charClassName="h-[0.88em] md:h-[0.9em] lg:h-[0.85em]">SMALL</TextSplit>
+                  <span className="relative inline-flex items-center text-orange">
+                    <TextSplit maxMove={80} falloff={0.3} charClassName="h-[0.88em] leading-[0.88] md:h-[0.9em] md:leading-[0.9] lg:h-[0.85em] lg:leading-[0.85]">SMALL</TextSplit>
                     <span className="absolute -bottom-[4px] lg:-bottom-[6px] left-0 right-0 h-[5px] md:h-[6px] lg:h-[8px] bg-ink pointer-events-none" aria-hidden="true" />
                   </span><br />
-                  <span className="relative inline-flex text-orange">
-                    <TextSplit maxMove={80} falloff={0.3} charClassName="h-[0.88em] md:h-[0.9em] lg:h-[0.85em]">BRANDS</TextSplit>
+                  <span className="relative inline-flex items-center text-orange">
+                    <TextSplit maxMove={80} falloff={0.3} charClassName="h-[0.88em] leading-[0.88] md:h-[0.9em] md:leading-[0.9] lg:h-[0.85em] lg:leading-[0.85]">BRANDS</TextSplit>
                     <span className="absolute -bottom-[4px] lg:-bottom-[6px] left-0 right-0 h-[5px] md:h-[6px] lg:h-[8px] bg-ink pointer-events-none" aria-hidden="true" />
                   </span><br />
                   LOOK<br />

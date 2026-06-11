@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 interface TextSplitProps {
   children: string;
   className?: string;
+  // must include both h-[*em] and leading-[*] matching h1 line-height
   charClassName?: string;
   topClassName?: string;
   bottomClassName?: string;
@@ -15,7 +16,7 @@ interface TextSplitProps {
 export const TextSplit = ({
   children,
   className,
-  charClassName = "h-[1em]",
+  charClassName = "h-[1em] leading-none",
   topClassName,
   bottomClassName,
   maxMove = 50,
@@ -30,15 +31,15 @@ export const TextSplit = ({
   };
 
   return (
-    <div className={cn("relative flex items-center justify-start", className)}>
+    <span className={cn("inline-flex items-center", className)}>
       {children.split("").map((char, index) => {
         const offset = getOffset(index);
         const displayChar = char === " " ? " " : char;
 
         return (
-          <div
+          <span
             key={`${char}-${index}`}
-            className={cn("relative flex flex-col w-auto leading-none overflow-hidden", charClassName)}
+            className={cn("inline-flex flex-col overflow-hidden w-auto", charClassName)}
             onMouseEnter={() => setHoverIndex(index)}
             onMouseLeave={() => setHoverIndex(null)}
           >
@@ -59,9 +60,9 @@ export const TextSplit = ({
             >
               <span className="block -translate-y-1/2">{displayChar}</span>
             </motion.span>
-          </div>
+          </span>
         );
       })}
-    </div>
+    </span>
   );
 };
