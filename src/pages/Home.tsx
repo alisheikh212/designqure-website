@@ -40,7 +40,7 @@ export function Home() {
                   WEBSITES<br />
                   THAT MAKE<br />
                   <span className="relative inline-flex items-center text-orange">
-                    <TextSplit maxMove={80} falloff={0.3} charClassName="h-[0.88em] leading-[0.88] md:h-[0.9em] md:leading-[0.9] lg:h-[0.85em] lg:leading-[0.85]">SMALL</TextSplit>
+                    <TextSplit maxMove={80} falloff={0.3} charClassName="h-[0.88em] leading-[0.88] md:h-[0.9em] md:leading-[0.9] lg:h-[0.85em] lg:leading-[0.85]">MODERN</TextSplit>
                     <span className="absolute -bottom-[4px] lg:-bottom-[6px] left-0 right-0 h-[5px] md:h-[6px] lg:h-[8px] bg-ink pointer-events-none" aria-hidden="true" />
                   </span><br />
                   <span className="relative inline-flex items-center text-orange">
@@ -48,13 +48,14 @@ export function Home() {
                     <span className="absolute -bottom-[4px] lg:-bottom-[6px] left-0 right-0 h-[5px] md:h-[6px] lg:h-[8px] bg-ink pointer-events-none" aria-hidden="true" />
                   </span><br />
                   LOOK<br />
-                  SERIOUS.
+                  IMPOSSIBLE<br />
+                  TO IGNORE.
                 </h1>
               </Reveal>
 
               <Reveal direction="up" delay={0.3} className="relative z-10 mt-5 md:mt-6 lg:mt-8">
                  <p className="font-sans text-[16px] md:text-[18px] leading-[1.45] md:leading-[1.55] font-medium text-[#1A1A1A] w-full md:max-w-[420px] lg:max-w-[440px]">
-                   We build high-impact, brutalist digital experiences that refuse to blend in. For brands with taste, ambition, and something to prove.
+                   We're a website design agency building high-converting, brutalist websites that refuse to blend in. For brands with taste, ambition, and something to prove.
                  </p>
               </Reveal>
 
@@ -169,7 +170,7 @@ export function Home() {
                <Reveal direction="up" delay={0.3} className="relative z-10 w-full max-w-lg mt-4 md:mt-6">
                   <h3 className="font-display font-bold text-[28px] md:text-4xl lg:text-5xl uppercase mb-3 md:mb-4 tracking-tighter w-full break-words">WEBSITE DESIGN</h3>
                   <p className="font-sans text-[15px] md:text-[17px] lg:text-xl font-bold leading-snug text-ink/90">
-                    Bespoke digital experiences built from the ground up. We craft your landing page, website structure, and visual identity.
+                    Bespoke digital experiences built from the ground up. We craft your landing page design, website structure, and modern brand identity.
                   </p>
                </Reveal>
              </div>
@@ -203,7 +204,7 @@ export function Home() {
                     <div>
                        <h4 className="font-display text-[20px] md:text-2xl font-bold uppercase mb-1 tracking-tight">SHOPIFY</h4>
                        <p className="font-sans text-[13px] md:text-sm font-bold leading-tight text-ink">
-                         E-commerce that actually sells.
+                         E-commerce brand visuals that sell — Shopify to Amazon.
                        </p>
                     </div>
                   </div>

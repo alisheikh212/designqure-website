@@ -17,7 +17,7 @@ export function WorkSection() {
                 {"WORK WITH\nMORE ATTITUDE\nTHAN A\nTEMPLATE."}
               </h2>
               <p className="font-sans text-[15px] md:text-[18px] leading-[1.45] font-medium text-ink mt-4 md:mt-6 max-w-[420px]">
-                We craft sites that feel sharper than standard digital brochures, brand decks, and template themes.
+                From e-commerce stores to portfolio websites, we craft sites that feel sharper than standard brochures, brand decks, and template themes.
               </p>
             </Reveal>
           </div>
@@ -91,9 +91,9 @@ export function WorkSection() {
 
                     {/* Image */}
                     {project.image && (
-                      <img 
-                        src={project.image} 
-                        alt={project.title} 
+                      <img
+                        src={project.image}
+                        alt={project.alt || project.title}
                         className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02] relative z-10 block"
                         onError={(e) => {
                           e.currentTarget.style.display = 'none';
