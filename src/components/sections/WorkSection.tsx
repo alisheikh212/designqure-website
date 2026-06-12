@@ -94,6 +94,8 @@ export function WorkSection() {
                       <img
                         src={project.image}
                         alt={project.alt || project.title}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02] relative z-10 block"
                         onError={(e) => {
                           e.currentTarget.style.display = 'none';

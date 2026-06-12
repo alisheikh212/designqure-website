@@ -203,7 +203,7 @@ export function Home() {
                     <div>
                        <h4 className="font-display text-[20px] md:text-2xl font-bold uppercase mb-1 tracking-tight">SHOPIFY</h4>
                        <p className="font-sans text-[13px] md:text-sm font-bold leading-tight text-ink">
-                         E-commerce brand visuals that sell — Shopify to Amazon.
+                         E-commerce brand visuals that sell.
                        </p>
                     </div>
                   </div>
