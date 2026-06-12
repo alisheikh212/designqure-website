@@ -44,7 +44,7 @@ export const portfolioProjects = [
     category: "Corporate Website",
     image: "/portfolio/mif.png",
     link: "https://mif-solutions.vercel.app",
-    alt: "Baking Solutions – professional corporate website design concept",
+    alt: "Banking Equipment Solutions – professional corporate website design concept",
     description:
       "A professional corporate website system.",
     status: "Concept",
