@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Reveal, Parallax } from '@/components/ui/Motion';
 import { TextSplit } from '@/components/ui/split-text';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
@@ -10,8 +10,19 @@ import { AboutSection } from '@/components/sections/AboutSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { ContactFaqSection } from '@/components/sections/ContactFaqSection';
+import { WebsiteDiagnosisSection } from '@/components/sections/WebsiteDiagnosisSection';
+import { GooeyText } from '@/components/ui/gooey-text-morphing';
 
 export function Home() {
+  const [preselectedService, setPreselectedService] = useState('');
+  const [leadSource, setLeadSource] = useState('');
+
+  const handleRequestDiagnosis = () => {
+    setPreselectedService('website-audit');
+    setLeadSource('Free Website Diagnosis');
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div id="home" className="bg-paper min-h-screen font-sans">
       
@@ -53,15 +64,42 @@ export function Home() {
               </Reveal>
 
               <Reveal direction="up" delay={0.3} className="relative z-10 mt-5 md:mt-6 lg:mt-8">
-                 <p className="font-sans text-[16px] md:text-[18px] leading-[1.45] md:leading-[1.55] font-medium text-[#1A1A1A] w-full md:max-w-[420px] lg:max-w-[440px]">
-                   We're a website design agency building high-converting, brutalist websites that refuse to blend in. For brands with taste, ambition, and something to prove.
-                 </p>
+                {/* Original paragraph (kept for easy revert — swap GooeyText below back to this):
+                <p className="font-sans text-[16px] md:text-[18px] leading-[1.45] md:leading-[1.55] font-medium text-[#1A1A1A] w-full md:max-w-[420px] lg:max-w-[440px]">
+                  We're a website design agency building high-converting, brutalist websites that refuse to blend in. For brands with taste, ambition, and something to prove.
+                </p>
+                */}
+                <GooeyText
+                  texts={[
+                    "Website design that refuses to blend in.",
+                    "For brands with taste and something to prove.",
+                    "Brutalist. Sharp. Built to convert.",
+                    "Your website is your strongest brand asset.",
+                  ]}
+                  morphTime={1.2}
+                  cooldownTime={2.5}
+                  align="left"
+                  className="h-8 md:h-10 w-full md:max-w-[420px] lg:max-w-[440px]"
+                  textClassName="font-sans text-[16px] md:text-[18px] leading-[1.45] md:leading-[1.55] font-medium text-[#1A1A1A]"
+                />
               </Reveal>
 
               <Reveal direction="up" delay={0.4} className="relative z-10 mt-6 lg:mt-10">
-                 <a href="#work" className="inline-flex items-center justify-center font-mono text-[11px] font-bold uppercase tracking-[0.1em] bg-lime text-ink px-8 h-[44px] md:h-[48px] border-[2px] border-ink hover:translate-x-[2px] hover:translate-y-[2px] transition-transform shadow-[4px_4px_0px_#050505] hover:shadow-none w-fit">
-                    VIEW SELECTED WORK <ArrowRight size={16} strokeWidth={3} className="rotate-90 ml-2" />
-                 </a>
+                <div className="flex flex-col sm:flex-row gap-3 w-fit">
+                  <button
+                    type="button"
+                    onClick={handleRequestDiagnosis}
+                    className="inline-flex items-center justify-center font-mono text-[11px] font-bold uppercase tracking-[0.1em] bg-lime text-ink px-8 h-[44px] md:h-[48px] border-[2px] border-ink hover:translate-x-[2px] hover:translate-y-[2px] transition-transform shadow-[4px_4px_0px_#050505] hover:shadow-none w-fit"
+                  >
+                    GET FREE DIAGNOSIS <ArrowRight size={16} strokeWidth={3} className="ml-2" />
+                  </button>
+                  <a
+                    href="#work"
+                    className="inline-flex items-center justify-center font-mono text-[11px] font-bold uppercase tracking-[0.1em] bg-paper text-ink px-8 h-[44px] md:h-[48px] border-[2px] border-ink hover:bg-ink/5 transition-colors w-fit"
+                  >
+                    VIEW OUR WORK <ArrowRight size={16} strokeWidth={3} className="ml-2" />
+                  </a>
+                </div>
               </Reveal>
             </div>
 
@@ -203,6 +241,22 @@ export function Home() {
                     <div>
                        <h4 className="font-display text-[20px] md:text-2xl font-bold uppercase mb-1 tracking-tight">SHOPIFY</h4>
                        <p className="font-sans text-[13px] md:text-sm font-bold leading-tight text-ink">
+                         Shopify stores that actually drive conversion.
+                       </p>
+                    </div>
+                  </div>
+                </Reveal>
+
+                {/* Blue Card */}
+                <Reveal direction="left" delay={0.6} className="w-full">
+                  <div className="bg-blue border border-ink p-5 flex flex-col justify-between h-[120px] md:h-32 w-full relative selection:bg-white/20 selection:text-white antialiased">
+                    <div className="flex justify-between items-start">
+                       <span className="font-mono text-xs font-bold text-black/60">04</span>
+                       <ArrowUpRight size={16} className="text-white/60" />
+                    </div>
+                    <div>
+                       <h4 className="font-display text-[20px] md:text-2xl font-bold uppercase mb-1 tracking-tight text-black">E-COMMERCE LISTINGS</h4>
+                       <p className="font-sans text-[13px] md:text-sm font-bold leading-tight text-black">
                          E-commerce brand visuals that sell.
                        </p>
                     </div>
@@ -212,34 +266,17 @@ export function Home() {
              </div>
           </div>
 
-          {/* BOTTOM ROW */}
-          <div className="grid grid-cols-1 md:grid-cols-12 lg:grid-cols-12 gap-y-6 md:gap-x-8 lg:gap-x-12 mt-8 md:mt-12 lg:mt-24 items-end">
-             <div className="hidden md:block md:col-span-7 lg:col-span-7"></div>
-             <div className="col-span-1 md:col-span-5 lg:col-span-5 flex flex-row flex-wrap gap-x-6 gap-y-4 items-center border-t border-ink/20 pt-6 md:pt-8 w-full">
-                <Reveal direction="up" delay={0.6}>
-                  <div className="flex items-center gap-1.5 group cursor-pointer w-max">
-                     <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform stroke-ink" />
-                     <span className="font-mono text-xs font-bold uppercase tracking-widest text-ink group-hover:text-blue transition-colors">PORTFOLIOS</span>
-                  </div>
-                </Reveal>
-                <Reveal direction="up" delay={0.7}>
-                  <div className="flex items-center gap-1.5 group cursor-pointer w-max">
-                     <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform stroke-ink" />
-                     <span className="font-mono text-xs font-bold uppercase tracking-widest text-ink group-hover:text-blue transition-colors">REDESIGNS</span>
-                  </div>
-                </Reveal>
-             </div>
-          </div>
 
         </div>
       </section>
 
+      <WebsiteDiagnosisSection onRequestDiagnosis={handleRequestDiagnosis} />
       <WorkSection />
       <ProcessSection />
       <AboutSection />
       <ContactSection />
       <TestimonialsSection />
-      <ContactFaqSection />
+      <ContactFaqSection preselectedService={preselectedService} leadSource={leadSource} />
 
     </div>
   );

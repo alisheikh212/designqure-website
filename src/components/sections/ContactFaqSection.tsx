@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Reveal } from '@/components/ui/Motion';
 import { MessageSquare, Plus, Minus } from 'lucide-react';
 
 type SubmitStatus = "idle" | "submitting" | "success" | "error";
+
+interface ContactFaqSectionProps {
+  preselectedService?: string;
+  leadSource?: string;
+}
 
 const FAQItem = ({ question, answer }: { question: string; answer: string }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,8 +36,18 @@ const FAQItem = ({ question, answer }: { question: string; answer: string }) => 
   );
 };
 
-export function ContactFaqSection() {
+export function ContactFaqSection({ preselectedService = '', leadSource = '' }: ContactFaqSectionProps) {
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
+  const [serviceValue, setServiceValue] = useState('');
+  const [leadSourceValue, setLeadSourceValue] = useState('');
+
+  useEffect(() => {
+    if (preselectedService) setServiceValue(preselectedService);
+  }, [preselectedService]);
+
+  useEffect(() => {
+    setLeadSourceValue(leadSource);
+  }, [leadSource]);
 
   const encode = (data: Record<string, string>) =>
     new URLSearchParams(data).toString();
@@ -67,6 +82,8 @@ export function ContactFaqSection() {
       }
 
       form.reset();
+      setServiceValue('');
+      setLeadSourceValue('');
       setSubmitStatus("success");
     } catch (error) {
       console.error("Contact form submission error:", error);
@@ -164,6 +181,7 @@ export function ContactFaqSection() {
                       className="flex flex-col gap-5 w-full flex-grow"
                     >
                        <input type="hidden" name="form-name" value="contact" />
+                       <input type="hidden" name="leadSource" value={leadSourceValue} />
                        <p hidden>
                          <label>Don’t fill this out: <input name="bot-field" /></label>
                        </p>
@@ -191,11 +209,18 @@ export function ContactFaqSection() {
                        
                        <div className="flex flex-col mt-2">
                           <label className="font-mono text-[11px] font-bold uppercase tracking-wider mb-2 text-ink/80">Primary Service</label>
-                          <select name="service" defaultValue="" className="w-full border border-ink/30 focus:border-ink p-3 outline-none font-sans text-sm md:text-base font-medium text-ink bg-transparent transition-colors cursor-pointer rounded-none">
+                          <select
+                            name="service"
+                            value={serviceValue}
+                            onChange={(e) => setServiceValue(e.target.value)}
+                            className="w-full border border-ink/30 focus:border-ink p-3 outline-none font-sans text-sm md:text-base font-medium text-ink bg-transparent transition-colors cursor-pointer rounded-none"
+                          >
                              <option value="" disabled>Select a service...</option>
-                             <option value="website">Website Design</option>
-                             <option value="landing-page">Landing Page</option>
-                             <option value="shopify">Shopify Store</option>
+                             <option value="website-audit">Website Audit</option>
+                             <option value="website-design">Website Design</option>
+                             <option value="website-redesign">Website Redesign</option>
+                             <option value="template-setup">Template Setup</option>
+                             <option value="brand-design">Brand / Graphic Design</option>
                              <option value="other">Other</option>
                           </select>
                        </div>
