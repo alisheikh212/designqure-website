@@ -40,7 +40,7 @@ export const portfolioProjects = [
     status: "Live",
   },
   {
-    title: "Baking Solutions",
+    title: "Banking Equipment Solutions",
     category: "Corporate Website",
     image: "/portfolio/mif.png",
     link: "https://mif-solutions.vercel.app",
