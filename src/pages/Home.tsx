@@ -40,7 +40,7 @@ export function Home() {
                   WEBSITES<br />
                   THAT MAKE<br />
                   <span className="relative inline-flex items-center text-orange">
-                    <TextSplit maxMove={80} falloff={0.3} charClassName="h-[0.88em] leading-[0.88] md:h-[0.9em] md:leading-[0.9] lg:h-[0.85em] lg:leading-[0.85]">MODERN</TextSplit>
+                    <TextSplit maxMove={80} falloff={0.3} charClassName="h-[0.88em] leading-[0.88] md:h-[0.9em] md:leading-[0.9] lg:h-[0.85em] lg:leading-[0.85]">SMALL</TextSplit>
                     <span className="absolute -bottom-[4px] lg:-bottom-[6px] left-0 right-0 h-[5px] md:h-[6px] lg:h-[8px] bg-ink pointer-events-none" aria-hidden="true" />
                   </span><br />
                   <span className="relative inline-flex items-center text-orange">
@@ -48,8 +48,7 @@ export function Home() {
                     <span className="absolute -bottom-[4px] lg:-bottom-[6px] left-0 right-0 h-[5px] md:h-[6px] lg:h-[8px] bg-ink pointer-events-none" aria-hidden="true" />
                   </span><br />
                   LOOK<br />
-                  IMPOSSIBLE<br />
-                  TO IGNORE.
+                  SERIOUS.
                 </h1>
               </Reveal>
 
