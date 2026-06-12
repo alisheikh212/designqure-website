@@ -3,7 +3,7 @@ export const portfolioProjects = [
     title: "R Digital",
     category: "Digital Operator Website",
     image: "/portfolio/rdigm.png",
-    link: "rdigital-sigma.vercel.app/",
+    link: "https://rdigital-sigma.vercel.app/",
     description:
       "Operating & Advisory Firm",
     status: "Concept",
@@ -39,7 +39,7 @@ export const portfolioProjects = [
     title: "Baking Solutions",
     category: "Corporate Website",
     image: "/portfolio/mif.png",
-    link: "mif-solutions.vercel.app/",
+    link: "https://mif-solutions.vercel.app",
     description:
       "A professional corporate website system.",
     status: "Concept",
