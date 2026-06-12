@@ -36,12 +36,12 @@ export const portfolioProjects = [
     status: "Live",
   },
   {
-    title: "Founder Portfolio",
-    category: "Personal Brand",
-    image: "/portfolio/founder-portfolio.jpg",
-    link: "https://founder-portfolio.designqure.com",
+    title: "Baking Solutions",
+    category: "Corporate Website",
+    image: "/portfolio/mif.png",
+    link: "https://https://mif-solutions.vercel.app/",
     description:
-      "A sharp personal website system for founders, consultants, and creators.",
+      "A professional corporate website system.",
     status: "Concept",
   },
   {
