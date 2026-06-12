@@ -3,7 +3,7 @@ export const portfolioProjects = [
     title: "R Digital",
     category: "Digital Operator Website",
     image: "/portfolio/rdigm.png",
-    link: "https://https://rdigital-sigma.vercel.app/",
+    link: "rdigital-sigma.vercel.app/",
     description:
       "Operating & Advisory Firm",
     status: "Concept",
