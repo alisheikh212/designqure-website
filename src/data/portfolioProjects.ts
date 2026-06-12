@@ -39,7 +39,7 @@ export const portfolioProjects = [
     title: "Baking Solutions",
     category: "Corporate Website",
     image: "/portfolio/mif.png",
-    link: "https://https://mif-solutions.vercel.app/",
+    link: "mif-solutions.vercel.app/",
     description:
       "A professional corporate website system.",
     status: "Concept",
