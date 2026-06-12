@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Background -->
+  <rect width="100" height="100" fill="#F3F1EA"/>
+
+  <!-- Lime square — i dot -->
+  <rect x="3" y="3" width="26" height="20" fill="#C9FF00"/>
+
+  <!-- i stem -->
+  <rect x="3" y="27" width="17" height="67" fill="#1A1A1A"/>
+
+  <!-- D — left vertical bar -->
+  <rect x="23" y="3" width="17" height="91" fill="#1A1A1A"/>
+
+  <!-- D — outer bowl -->
+  <path d="M40 3 Q97 3 97 48 Q97 94 40 94 Z" fill="#1A1A1A"/>
+
+  <!-- D — inner cutout -->
+  <path d="M40 18 Q81 18 81 48 Q81 79 40 79 Z" fill="#F3F1EA"/>
+</svg>
